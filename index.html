@@ -4,132 +4,177 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spoorthi, Will You Be My Valentine? 💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:wght@400&display=swap" rel="stylesheet">
     <style>
         body {
+            font-family: 'Lora', serif;
             background: url('https://images.pexels.com/photos/207962/pexels-photo-207962.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260') no-repeat center center/cover;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            flex-direction: column;
-            font-family: 'Arial', sans-serif;
             color: white;
+            text-align: center;
             overflow: hidden;
-            position: relative;
+            transition: background 1s ease-in-out;
         }
 
         h1 {
-            font-size: 3rem;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 15px 25px;
-            border-radius: 15px;
-            animation: fadeIn 2s ease-in-out;
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: #FFD700;
+            letter-spacing: 5px;
+            padding: 20px 40px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transform: translateY(-50px);
+            opacity: 0;
+            animation: fadeIn 2s forwards 0.5s;
         }
 
         .buttons {
-            margin-top: 20px;
+            margin-top: 40px;
             display: flex;
-            gap: 20px;
+            gap: 30px;
+            justify-content: center;
         }
 
-        .heart-btn {
-            background: #ff4d6d;
-            color: white;
+        .button {
+            background-color: #FFD700;
+            color: #000;
+            font-size: 1.4rem;
             border: none;
-            padding: 15px 30px;
-            font-size: 1.5rem;
+            padding: 15px 40px;
             border-radius: 50px;
             cursor: pointer;
-            transition: 0.3s ease;
+            text-transform: uppercase;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
-        .heart-btn:hover {
-            background: #e60050;
-            transform: scale(1.1);
+        .button:hover {
+            background-color: #e6b800;
+            transform: translateY(-5px);
         }
 
-        /* Animations */
+        .button:active {
+            transform: translateY(1px);
+        }
+
         @keyframes fadeIn {
-            0% { opacity: 0; transform: scale(0.8); }
-            100% { opacity: 1; transform: scale(1); }
+            0% { opacity: 0; transform: translateY(-50px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes floating {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0); }
+        /* Scroll Animation */
+        .fadeInUp {
+            animation: fadeInUp 1s ease-out forwards;
         }
 
-        /* Floating Hearts */
-        .heart {
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .luxury-background {
             position: absolute;
-            width: 30px;
-            height: 30px;
-            background: red;
-            clip-path: polygon(50% 0%, 100% 30%, 80% 100%, 50% 80%, 20% 100%, 0% 30%);
-            animation: floatUp 5s infinite linear;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
         }
 
-        .heart:nth-child(odd) { left: 10%; animation-duration: 6s; }
-        .heart:nth-child(even) { left: 80%; animation-duration: 8s; }
-
-        @keyframes floatUp {
-            0% { transform: translateY(100vh); opacity: 1; }
-            100% { transform: translateY(-10vh); opacity: 0; }
+        .floating-elements {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            font-weight: bold;
+            color: #FFD700;
+            opacity: 0;
+            animation: floatText 6s ease-in-out infinite;
         }
 
-        /* Click animations */
-        .confetti {
-            position: fixed;
-            width: 100px;
-            height: 100px;
-            background: url('https://media.giphy.com/media/26AHONQ79FdWZhAI0/giphy.gif') no-repeat center center/contain;
-            pointer-events: none;
-            animation: pop 0.5s ease-out;
+        @keyframes floatText {
+            0% { transform: translateY(0); opacity: 0.5; }
+            50% { transform: translateY(-15px); opacity: 1; }
+            100% { transform: translateY(0); opacity: 0.5; }
         }
 
-        @keyframes pop {
-            0% { transform: scale(0); opacity: 1; }
-            100% { transform: scale(1.2); opacity: 0; }
+        /* High-end effect for buttons and visuals */
+        .button-container {
+            position: relative;
+        }
+        .luxury-button {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #FFD700;
+            font-size: 1.6rem;
+            padding: 15px 40px;
+            border-radius: 30px;
+            background-color: transparent;
+            border: 2px solid #FFD700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .luxury-button:hover {
+            background-color: #FFD700;
+            color: #000;
+            transform: translateY(-5px);
         }
     </style>
 </head>
 <body>
-    <h1>🌹 Spoorthi, Will You Be My Valentine? 🌷💖</h1>
-    <div class="buttons">
-        <button class="heart-btn" onclick="showEffect('yes')">Yes! 💘</button>
-        <button class="heart-btn" onclick="showEffect('absolutely')">Absolutely Yes! ❤️</button>
+    <div class="luxury-background"></div>
+    <div class="floating-elements">
+        Will You Be My Valentine? 💖
     </div>
 
-    <!-- Floating Hearts -->
+    <h1>Spoorthi, Will You Be My Valentine? 💖</h1>
+
+    <div class="buttons">
+        <div class="button-container">
+            <button class="button fadeInUp" onclick="showEffect('yes')">Yes! 💘</button>
+            <button class="luxury-button fadeInUp" onclick="showEffect('absolutely')">Absolutely Yes! ❤️</button>
+        </div>
+    </div>
+
     <script>
-        function createHearts() {
-            for (let i = 0; i < 15; i++) {
-                let heart = document.createElement("div");
-                heart.className = "heart";
-                heart.style.left = Math.random() * 100 + "vw";
-                heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
-                document.body.appendChild(heart);
-            }
-        }
-        createHearts();
-
         function showEffect(type) {
-            let confetti = document.createElement("div");
-            confetti.className = "confetti";
-            confetti.style.left = (Math.random() * 100) + "vw";
-            confetti.style.top = (Math.random() * 100) + "vh";
-            document.body.appendChild(confetti);
-
-            setTimeout(() => confetti.remove(), 700);
-
+            // Handle the effect when the button is clicked
             if (type === 'yes') {
+                // Background changes to a positive response image (using a valid URL)
+                document.body.style.background = 'url("https://media.giphy.com/media/3o6Zt0nFRe0h59eqcQ/giphy.gif") no-repeat center center/cover';
+                document.body.style.backgroundSize = 'cover';
                 alert("Yay! You made my day, Spoorthi! 💖");
-            } else {
-                alert("OMG! You’re the best, Spoorthi! ❤️🎉");
+            }
+
+            if (type === 'absolutely') {
+                // Background changes to another animated image on "Absolutely Yes"
+                document.body.style.background = 'url("https://media.giphy.com/media/26AHONQ79FdWZhAI0/giphy.gif") no-repeat center center/cover';
+                document.body.style.backgroundSize = 'cover';
+                alert("You’re my Valentine, Spoorthi! ❤️💖");
             }
         }
+
+        // Create Floating Elements (High-End Visuals)
+        document.body.addEventListener('mousemove', (e) => {
+            const bubble = document.createElement('div');
+            bubble.className = 'floating-elements';
+            bubble.style.left = `${e.pageX - 50}px`;
+            bubble.style.top = `${e.pageY - 50}px`;
+            document.body.appendChild(bubble);
+            setTimeout(() => bubble.remove(), 2000);
+        });
     </script>
 </body>
 </html>
