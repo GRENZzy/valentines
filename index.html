@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spoorthi, Will You Be My Valentine? 💖</title>
+    <style>
+        body {
+            background: url('https://images.pexels.com/photos/207962/pexels-photo-207962.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+            font-family: 'Arial', sans-serif;
+            color: white;
+            overflow: hidden;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px 25px;
+            border-radius: 15px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .heart-btn {
+            background: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .heart-btn:hover {
+            background: #e60050;
+            transform: scale(1.1);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes floating {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Floating Hearts */
+        .heart {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: red;
+            clip-path: polygon(50% 0%, 100% 30%, 80% 100%, 50% 80%, 20% 100%, 0% 30%);
+            animation: floatUp 5s infinite linear;
+        }
+
+        .heart:nth-child(odd) { left: 10%; animation-duration: 6s; }
+        .heart:nth-child(even) { left: 80%; animation-duration: 8s; }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh); opacity: 1; }
+            100% { transform: translateY(-10vh); opacity: 0; }
+        }
+
+        /* Click animations */
+        .confetti {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            background: url('https://media.giphy.com/media/26AHONQ79FdWZhAI0/giphy.gif') no-repeat center center/contain;
+            pointer-events: none;
+            animation: pop 0.5s ease-out;
+        }
+
+        @keyframes pop {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(1.2); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <h1>🌹 Spoorthi, Will You Be My Valentine? 🌷💖</h1>
+    <div class="buttons">
+        <button class="heart-btn" onclick="showEffect('yes')">Yes! 💘</button>
+        <button class="heart-btn" onclick="showEffect('absolutely')">Absolutely Yes! ❤️</button>
+    </div>
+
+    <!-- Floating Hearts -->
+    <script>
+        function createHearts() {
+            for (let i = 0; i < 15; i++) {
+                let heart = document.createElement("div");
+                heart.className = "heart";
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+                document.body.appendChild(heart);
+            }
+        }
+        createHearts();
+
+        function showEffect(type) {
+            let confetti = document.createElement("div");
+            confetti.className = "confetti";
+            confetti.style.left = (Math.random() * 100) + "vw";
+            confetti.style.top = (Math.random() * 100) + "vh";
+            document.body.appendChild(confetti);
+
+            setTimeout(() => confetti.remove(), 700);
+
+            if (type === 'yes') {
+                alert("Yay! You made my day, Spoorthi! 💖");
+            } else {
+                alert("OMG! You’re the best, Spoorthi! ❤️🎉");
+            }
+        }
+    </script>
+</body>
+</html>
